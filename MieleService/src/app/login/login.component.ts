@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor( private authService: AuthService,
     private router: Router,
     private toastr: ToastrService) {
-    document.body.style.backgroundImage = "url(../../../../assets/img/Homeback.jpg)";
+    document.body.style.backgroundImage = "url(../../../../assets/img/immer_besser.jpg)";
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundSize = "cover";
     document.body.style.height = "auto";

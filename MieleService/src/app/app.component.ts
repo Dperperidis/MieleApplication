@@ -18,7 +18,7 @@ export class AppComponent {
     const token = localStorage.getItem('token');
     if (token) {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
-      console.log(this.authService.decodedToken);
+      this.authService.isAdmin = this.authService.decodedToken.isAdmin === 'True'
     }
   }
 }
