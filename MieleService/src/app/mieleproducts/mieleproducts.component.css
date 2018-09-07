@@ -28,3 +28,7 @@ img{
     -moz-box-shadow:    3px 3px 5px 6px rgb(150, 148, 148); /* Firefox 3.5 - 3.6 */
     box-shadow:         3px 3px 5px 6px rgb(150, 148, 148);      
   }
+
+h5{
+  font-weight: 500;
+}

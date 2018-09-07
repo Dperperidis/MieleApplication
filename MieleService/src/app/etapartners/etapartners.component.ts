@@ -24,7 +24,7 @@ export class EtapartnersComponent implements OnInit {
   filter(query: string) {
     if (query.length === 0) {
       this.filteredPartner = []
-    }
+    } else
     if (this.data == true) {
       this.filteredPartner = query
         ? this.partner.filter(t =>

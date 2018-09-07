@@ -54,7 +54,7 @@
     <div class="col-sm-4">
       <div class="form-group">
         <label for="fullName">Ονοματεπώνυμο</label>
-        <textarea style="overflow-y:hidden;" name="fullName" id="fullName" type="text" [(ngModel)]="tech.fullName" class="form-control"></textarea>
+        <input style="overflow-y:hidden;" name="fullName" id="fullName" type="text" [(ngModel)]="tech.fullName" class="form-control">
       </div>
       <div class="form-group">
         <label for="damage">Βλάβη</label>
@@ -85,7 +85,7 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let task of tasks;let i = index" >
+      <tr *ngFor="let task of tasks;let i = index">
         <td>{{task.area | titlecase }}</td>
         <td>{{task.date}}/2018</td>
         <td>{{task.customerId}}</td>
@@ -99,6 +99,7 @@
         <td *ngIf="user.isAdmin">{{task.totalCost}}</td>
         <td *ngIf="user.isAdmin">{{task.serviceDesc}}</td>
         <td class="width-140">
+          <button type="button" class="btn-outline-secondary btn mr-2" (click)="showTaskDetail()"><i class="fa fa-arrow-down"></i></button>
           <button type="button" class="btn-outline-danger btn mr-2" (click)="delete(task.id)"><i class="fa fa-times"></i></button>
           <button type="button" class="btn-outline-warning btn" (click)="editTask(i)"><i class="fa fa-edit"></i></button>
         </td>
@@ -106,101 +107,3 @@
     </tbody>
   </table>
 </div>
-
-<!-- <div class="p-5">
-  <div class="row">
-    <form #editTask="ngForm" class="col-2" id="editTask">
-      <div class="form-group">
-        <label for="area">Περιοχή</label>
-        <input name="area" id="area" type="text" [(ngModel)]="tech.area" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="date">Ημερομηνία</label>
-        <input name="date" id="date" type="text" [(ngModel)]="tech.date" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="customerId">ID Πελάτη</label>
-        <input name="customerId" id="customerId" type="text" [(ngModel)]="tech.customerId" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="fullName">Ονοματεπώνυμο</label>
-        <textarea style="overflow-y:hidden;" name="fullName" id="fullName" type="text" [(ngModel)]="tech.fullName" class="form-control"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="order">Εντολή</label>
-        <input name="order" id="order" type="text" [(ngModel)]="tech.order" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="origin">Προέλευση</label>
-        <input name="origin" id="origin" type="text" [(ngModel)]="tech.origin" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="model">Μοντέλο</label>
-        <input name="model" id="model" type="text" [(ngModel)]="tech.model" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="damage">Βλάβη</label>
-        <textarea name="damage" id="damage" type="text" [(ngModel)]="tech.damage" class="form-control" style="height:100px"></textarea>
-      </div>
-      <div class="form-group" *ngIf="user.isAdmin">
-        <label for="serviceCost">Κόστος Αντα/τικών</label>
-        <input name="serviceCost" id="serviceCost" type="text" [(ngModel)]="tech.serviceCost" class="form-control">
-      </div>
-      <div class="form-group" *ngIf="user.isAdmin">
-        <label for="partsCost">Κόστος Επισκευής</label>
-        <input name="partsCost" id="partsCost" type="text" [(ngModel)]="tech.partsCost" class="form-control">
-      </div>
-      <div class="form-group" *ngIf="user.isAdmin">
-        <label for="totalCost">Συνολικό Κόστος</label>
-        <input name="totalCost" id="totalCost" type="text" [(ngModel)]="tech.totalCost" class="form-control">
-      </div>
-      <div class="form-group" *ngIf="user.isAdmin">
-        <label for="serviceDesc">Περιγραφή Επισκευής</label>
-        <input name="serviceDesc" id="serviceDesc" type="text" [(ngModel)]="tech.serviceDesc" class="form-control">
-      </div>
-      <button class="btn btn-primary" type="button" (click)="createOrUpdate()">{{tech.id ? 'Αποθήκευση' : 'Καταχώρηση'}}</button>
-    </form>
-    <div class="col-10 p-1">
-      <table class="tg">
-        <tr>
-          <th >Διαγραφή/<br>Επεξεργασία</th>
-          <th >Περιοχή</th>
-          <th >Ημερομηνία</th>
-          <th >ID πελάτη</th>
-          <th >Ονοματεπώνυμο</th>
-          <th >Εντολή</th>
-          <th >Προέλευση</th>
-          <th >Μοντέλο</th>
-          <th >Βλάβη</th>
-          <th  *ngIf="user.isAdmin">Κόστος Ανταλ/των</th>
-          <th  *ngIf="user.isAdmin">Κόστος Επισκευής</th>
-          <th  *ngIf="user.isAdmin">Συνολικό Κόστος</th>
-          <th  *ngIf="user.isAdmin">Περιγραφή Επισκευής</th>
-        </tr>
-        <tr *ngFor="let task of tasks">
-
-          <div class="btn-group-vertical mt-3">
-            <div class="button-row">
-              <button type="button" class="btn btn-default delete btn-circle btn-lg" (click)="delete(task.id)"><i class="fa fa-times"></i></button>
-              <button type="button" class="btn btn-default edit btn-circle btn-lg"  (click)="getTask(task.id)"><i class="fa fa-edit"></i></button>
-            </div>
-
-          </div>
-          <td>{{task.area | titlecase }}</td>
-          <td>{{task.date}}/2018</td>
-          <td>{{task.customerId}}</td>
-          <td>{{task.fullName | titlecase}}</td>
-          <td>{{task.order}}</td>
-          <td>{{task.origin}}</td>
-          <td style="text-transform: uppercase;font-style: italic"><strong>{{task.model}}</strong></td>
-          <td>{{task.damage}}</td>
-          <td *ngIf="user.isAdmin">{{task.partsCost}}</td>
-          <td *ngIf="user.isAdmin">{{task.serviceCost}}</td>
-          <td *ngIf="user.isAdmin">{{task.totalCost}}</td>
-          <td *ngIf="user.isAdmin">{{task.serviceDesc}}</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div> -->

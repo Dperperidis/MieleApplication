@@ -112,10 +112,10 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ["localhost:61646"],
+        whitelistedDomains: ["localhost:61211"],
         blacklistedRoutes: [
-          "localhost:61646/api/auth",
-          "localhost:61646/api/techs"
+          "localhost:61211/api/auth",
+          "localhost:61211/api/techs"
         ]
       }
     })

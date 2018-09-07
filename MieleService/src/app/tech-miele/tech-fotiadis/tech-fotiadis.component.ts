@@ -16,6 +16,7 @@ export class TechFotiadisComponent implements OnInit {
   tasks = new Array<ExternalTechs>();
   user: User;
   showNewRow = false;
+  showTaskDetails = false;
 
   constructor(
     private techService: TechService,
@@ -33,6 +34,15 @@ export class TechFotiadisComponent implements OnInit {
       this.tasks = res;
     });
   }
+
+  showTaskDetail() {
+    this.showTaskDetails = true;
+  }
+
+  hideTaskDetail() {
+    this.showTaskDetails = false;
+  }
+
   newTask() {
     this.showNewRow = true;
   }
@@ -66,7 +76,9 @@ export class TechFotiadisComponent implements OnInit {
   }
 
   delete(id: number) {
-    if (window.confirm("Είστε σίγουρος/η οτι θέλετε να διαγράψετε την εντολή;")) {
+    if (
+      window.confirm("Είστε σίγουρος/η οτι θέλετε να διαγράψετε την εντολή;")
+    ) {
       const i = this.tasks.findIndex(x => x.id === id);
       this.techService.deleteTask(id).subscribe(
         res => {
