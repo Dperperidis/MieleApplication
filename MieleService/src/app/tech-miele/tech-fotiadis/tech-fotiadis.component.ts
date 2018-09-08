@@ -16,7 +16,6 @@ export class TechFotiadisComponent implements OnInit {
   tasks = new Array<ExternalTechs>();
   user: User;
   showNewRow = false;
-  showTaskDetails = false;
 
   constructor(
     private techService: TechService,
@@ -33,14 +32,6 @@ export class TechFotiadisComponent implements OnInit {
     this.techService.getTechTasks().subscribe(res => {
       this.tasks = res;
     });
-  }
-
-  showTaskDetail() {
-    this.showTaskDetails = true;
-  }
-
-  hideTaskDetail() {
-    this.showTaskDetails = false;
   }
 
   newTask() {
@@ -66,6 +57,8 @@ export class TechFotiadisComponent implements OnInit {
   updateTask() {
     this.techService.updateTask(this.tech).subscribe(res => {
       this.toastr.success("H αλλαγή έγινε επιτυχώς");
+      const i = this.tasks.findIndex(x => x.id === this.tech.id);
+      this.tasks[i] = res;
       this.tech = new ExternalTechs();
     });
   }
@@ -105,5 +98,6 @@ export class TechFotiadisComponent implements OnInit {
     this.tech.partsCost = this.tasks[i].partsCost;
     this.tech.serviceCost = this.tasks[i].serviceCost;
     this.tech.serviceDesc = this.tasks[i].serviceDesc;
+    this.tech.totalCost = this.tasks[i].totalCost;
   }
 }

@@ -1,7 +1,7 @@
 <div class="p-3">
   <div class="row mb-2">
     <div class="col-sm-6"><span class="h4">Εντολές εργασιών</span></div>
-    <div class="col-sm-6"><button type="button" class="btn btn-primary pull-right" (click)="newTask()">Νέο</button></div>
+    <div class="col-sm-6"><button type="button" class="btn btn-primary pull-right" (click)="newTask()">Νέα Εντολή</button></div>
 
   </div>
 
@@ -99,7 +99,6 @@
         <td *ngIf="user.isAdmin">{{task.totalCost}}</td>
         <td *ngIf="user.isAdmin">{{task.serviceDesc}}</td>
         <td class="width-140">
-          <button type="button" class="btn-outline-secondary btn mr-2" (click)="showTaskDetail()"><i class="fa fa-arrow-down"></i></button>
           <button type="button" class="btn-outline-danger btn mr-2" (click)="delete(task.id)"><i class="fa fa-times"></i></button>
           <button type="button" class="btn-outline-warning btn" (click)="editTask(i)"><i class="fa fa-edit"></i></button>
         </td>
