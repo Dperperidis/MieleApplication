@@ -7,16 +7,11 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 })
 export class ExternalTechsComponent implements OnInit, OnDestroy {
   constructor() {
-    document.body.style.backgroundImage =
-      "url(../../../../assets/img/backgroundtechmiele.jpg)";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.height = "auto";
+
   }
 
   ngOnInit() {}
 
   ngOnDestroy() {
-    document.body.style.backgroundImage = '';
   }
 }

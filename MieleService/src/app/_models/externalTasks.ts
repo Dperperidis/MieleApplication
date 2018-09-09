@@ -1,4 +1,4 @@
-export class ExternalTechs {
+export interface ExternalTasks {
     id: number;
     area: string;
     date: Date;

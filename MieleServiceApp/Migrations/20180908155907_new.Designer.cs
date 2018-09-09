@@ -10,8 +10,8 @@ using MieleServiceApp.Data;
 namespace MieleServiceApp.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20180906195857_test")]
-    partial class test
+    [Migration("20180908155907_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,7 @@ namespace MieleServiceApp.Migrations
 
                     b.Property<string>("Damage");
 
-                    b.Property<string>("Date");
+                    b.Property<DateTime>("Date");
 
                     b.Property<string>("FullName");
 

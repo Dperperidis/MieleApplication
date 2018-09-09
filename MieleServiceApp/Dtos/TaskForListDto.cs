@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MieleServiceApp.Model
+namespace MieleServiceApp.Dtos
 {
-    public class ExternalTechs
+    public class TaskForListDto
     {
         public int Id { get; set; }
         public string Area { get; set; }

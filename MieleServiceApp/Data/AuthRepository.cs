@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MieleServiceApp.Helpers;
 using MieleServiceApp.Model;
 
 namespace MieleServiceApp.Data
@@ -77,6 +78,13 @@ namespace MieleServiceApp.Data
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
+        }
+
+        public async Task<PagedList<ExternalTechs>> GetTasks(TaskParams taskParams)
+        {
+            var tasks = _context.ExternalTechs.OrderByDescending(x => x.Date).AsQueryable();
+
+            return await PagedList<ExternalTechs>.CreateAsync(tasks, taskParams.PageNumber, taskParams.PageSize);
         }
     }
 }

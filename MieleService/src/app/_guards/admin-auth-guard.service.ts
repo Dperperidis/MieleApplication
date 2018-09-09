@@ -1,13 +1,12 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
-
 import { AuthService } from "../_services/auth.service";
 import { ToastrService } from "ngx-toastr";
 
 @Injectable({
   providedIn: "root"
 })
-export class AuthGuard implements CanActivate {
+export class AdminAuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -15,13 +14,12 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(): boolean {
-    if (this.authService.loggedIn()) {
+    if (this.authService.isAdmin) {
       return true;
     } else {
-      this.toastr.error("Please Sign In first");
-      this.router.navigate(["/"]);
+      this.toastr.error("Δεν έχετε δικαιώματα για να εισέλθετε");
+      this.router.navigate(["/home"]);
       return false;
     }
   }
-
 }

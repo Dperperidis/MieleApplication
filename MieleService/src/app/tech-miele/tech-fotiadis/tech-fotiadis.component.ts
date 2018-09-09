@@ -5,6 +5,9 @@ import { User } from "../../_models/user";
 
 import { ExternalTechs } from "../../_models/externalTechs";
 import { ToastrService } from "ngx-toastr";
+import { BsDatepickerConfig } from "ngx-bootstrap";
+import { PaginatedResult } from "../../_models/pagination";
+import { ExternalTasks } from "../../_models/externalTasks";
 
 @Component({
   selector: "app-tech-fotiadis",
@@ -13,9 +16,10 @@ import { ToastrService } from "ngx-toastr";
 })
 export class TechFotiadisComponent implements OnInit {
   tech = new ExternalTechs();
-  tasks = new Array<ExternalTechs>();
+  tasks : Array<ExternalTasks>;
   user: User;
   showNewRow = false;
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(
     private techService: TechService,
@@ -25,18 +29,29 @@ export class TechFotiadisComponent implements OnInit {
   ) {
     this.route.data.subscribe(data => {
       this.user = data["agent"];
+      this.tasks = data["task"].result;
     });
   }
 
   ngOnInit() {
-    this.techService.getTechTasks().subscribe(res => {
-      this.tasks = res;
+    (this.bsConfig = {
+      containerClass: "theme-red",
+      dateInputFormat: 'DD/MM/YYYY'
     });
+
   }
 
   newTask() {
     this.showNewRow = true;
   }
+
+  sortByDate() {
+    this.techService.getTechTasks().subscribe(res =>{
+      this.tasks = res.result;
+    })
+  }
+  
+
 
   closeNewTask() {
     this.showNewRow = false;
@@ -93,6 +108,7 @@ export class TechFotiadisComponent implements OnInit {
     this.tech.fullName = this.tasks[i].fullName;
     this.tech.date = this.tasks[i].date;
     this.tech.id = this.tasks[i].id;
+    this.tech.model = this.tasks[i].model;
     this.tech.order = this.tasks[i].order;
     this.tech.origin = this.tasks[i].origin;
     this.tech.partsCost = this.tasks[i].partsCost;

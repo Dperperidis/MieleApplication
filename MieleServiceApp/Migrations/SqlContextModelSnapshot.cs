@@ -29,7 +29,7 @@ namespace MieleServiceApp.Migrations
 
                     b.Property<string>("Damage");
 
-                    b.Property<string>("Date");
+                    b.Property<DateTime>("Date");
 
                     b.Property<string>("FullName");
 

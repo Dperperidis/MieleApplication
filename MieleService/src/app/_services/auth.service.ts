@@ -41,7 +41,7 @@ export class AuthService {
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
           this.isAdmin = this.decodedToken.isAdmin === 'True';
           this.currentUser = user.user;
-          console.log(this.decodedToken);
+
         }
       })
     );

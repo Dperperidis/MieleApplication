@@ -25,13 +25,18 @@ import { TechMakrakisComponent } from "./tech-miele/tech-makrakis/tech-makrakis.
 import { EtapartnersComponent } from "./etapartners/etapartners.component";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guard";
 import { ArticlesComponent } from "./articles/articles.component";
+import { AdminboardComponent } from "./admin/adminboard.component";
+import { AdminAuthGuard } from "./_guards/admin-auth-guard.service";
+import { TaskResolver } from "./_resolvers/tasks.resolver";
 
 export const routes: Routes = [
   { path: "", component: LoginComponent },
 
   { path: "register", component: RegisterComponent },
   {
-    path: "",       
+    path: "",   
+    runGuardsAndResolvers: "always",
+    canActivate: [AuthGuard],    
     children: [
       { path: "mieletech", component: TechMieleComponent },
       { path: "products", component: MieleproductsComponent },
@@ -55,21 +60,12 @@ export const routes: Routes = [
       { path: "external/techs", component: ExternalTechsComponent },
       { path: "eta/partners", component: EtapartnersComponent },
       { path: "articles", component: ArticlesComponent },
+      { path: "admin/adminboard", component: AdminboardComponent, canActivate: [AdminAuthGuard] },
 
       {
         path: "external/tech/fot",
         component: TechFotiadisComponent,
-        resolve: { agent: AgentAuthResolver }
-      },
-      {
-        path: "external/tech/fot/:id",
-        component: TechFotiadisComponent,
-        resolve: { agent: AgentAuthResolver }
-      },
-      {
-        path: "external/tech/fot/new",
-        component: TechFotiadisComponent,
-        resolve: { agent: AgentAuthResolver }
+        resolve: { agent: AgentAuthResolver, task: TaskResolver }
       },
       
       {

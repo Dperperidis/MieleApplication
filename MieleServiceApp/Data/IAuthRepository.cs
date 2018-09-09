@@ -1,4 +1,5 @@
-﻿using MieleServiceApp.Model;
+﻿using MieleServiceApp.Helpers;
+using MieleServiceApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace MieleServiceApp.Data
         Task<User> Register(User user, string password);
         Task<bool> UserExists(string email);
         Task<User> Login(string email, string password);
+        Task<PagedList<ExternalTechs>> GetTasks(TaskParams taskParams);
 
     }
 }

@@ -5,3 +5,7 @@
 .btn{
     text-transform: none;
 }
+
+.clickable {
+cursor: pointer;
+}

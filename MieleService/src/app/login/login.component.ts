@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/home'])
+    }
   }
   ngOnDestroy(){
     document.body.style.backgroundImage = '';

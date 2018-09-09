@@ -15,7 +15,7 @@ namespace MieleServiceApp.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Area = table.Column<string>(nullable: true),
-                    Date = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     customerId = table.Column<string>(nullable: true),
                     FullName = table.Column<string>(nullable: true),
                     Order = table.Column<string>(nullable: true),
@@ -63,11 +63,11 @@ namespace MieleServiceApp.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
                     PostCode = table.Column<string>(nullable: true),
                     Area = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
                     Specialization = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     AreaService = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

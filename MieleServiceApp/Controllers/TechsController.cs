@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using MieleServiceApp.Data;
 using MieleServiceApp.Dtos;
+using MieleServiceApp.Helpers;
 using MieleServiceApp.Model;
 using System;
 using System.Collections.Generic;
@@ -16,11 +18,13 @@ namespace MieleServiceApp.Controllers
     {
         private readonly IAuthRepository _repo;
         private SqlContext _ctx;
+        private readonly IMapper _mapper;
 
-        public TechsController(SqlContext ctx, IAuthRepository repo)
+        public TechsController(SqlContext ctx, IAuthRepository repo, IMapper mapper)
         {
             _ctx = ctx;
             _repo = repo;
+            _mapper = mapper;
         }
 
 
@@ -76,12 +80,17 @@ namespace MieleServiceApp.Controllers
         [Route("getTasks")]
         [HttpGet]
 
-        public IActionResult GetTasks()
+        public async Task<IActionResult> GetTasks([FromQuery]TaskParams taskParams)
         {
             try
             {
-                var result = _ctx.ExternalTechs.OrderByDescending(x => x.Id).ToList();
-                return Ok(result);
+                var result = await _repo.GetTasks(taskParams);
+
+                var taskToReturn = _mapper.Map<IEnumerable<TaskForListDto>>(result);
+
+                Response.AddPagination(result.CurrentPage, result.PageSize, result.TotalCount, result.TotalPages);
+              
+                return Ok(taskToReturn);
 
             }
             catch (Exception ex)

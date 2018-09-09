@@ -19,6 +19,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ModalModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 
 import { AppComponent } from "./app.component";
@@ -56,6 +57,9 @@ import { EtapartnersComponent } from "./etapartners/etapartners.component";
 import { EtaPartnersService } from "./_services/eta-partners.service";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guard";
 import { ArticlesComponent } from './articles/articles.component';
+import { AdminboardComponent } from './admin/adminboard.component';
+import { AdminAuthGuard } from "./_guards/admin-auth-guard.service";
+import { TaskResolver } from "./_resolvers/tasks.resolver";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -86,7 +90,8 @@ export function tokenGetter() {
     TechFotiadisComponent,
     TechMakrakisComponent,
     EtapartnersComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    AdminboardComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +99,7 @@ export function tokenGetter() {
     MatButtonModule,
     MatExpansionModule,
     MatFormFieldModule,
+    BsDatepickerModule.forRoot(),
     MatProgressSpinnerModule,
     ModalModule.forRoot(),
     MatSortModule,
@@ -129,7 +135,9 @@ export function tokenGetter() {
     TechService,
     AgentAuthResolver,
     EtaPartnersService,
-    PreventUnsavedChanges
+    PreventUnsavedChanges,
+    AdminAuthGuard,
+    TaskResolver
   ],
   bootstrap: [AppComponent]
 })

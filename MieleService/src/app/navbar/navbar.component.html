@@ -21,8 +21,10 @@
           Καλωσήρθες {{ authService.decodedToken?.firstname | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item" [routerLink]="['/agents']">
-            <i class="fa fa-user"></i>Διαχείριση Agent</a>
+            <a class="dropdown-item" *ngIf="isAdmin" [routerLink]="['/admin/adminboard']">
+              <i class="fa fa-list" ></i> Στατιστικά</a>
+          <a class="dropdown-item"*ngIf="isAdmin" [routerLink]="['/agents']">
+            <i class="fa fa-user"></i> Διαχείριση Agent</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="" (click)="logout()">
             <i class="fa fa-sign-out"></i>Έξοδος</a>

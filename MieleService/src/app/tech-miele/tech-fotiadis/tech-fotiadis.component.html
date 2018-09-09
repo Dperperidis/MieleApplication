@@ -13,7 +13,7 @@
       </div>
       <div class="form-group">
         <label for="date">Ημερομηνία</label>
-        <input name="date" id="date" type="text" [(ngModel)]="tech.date" class="form-control">
+        <input name="date" id="date" type="text" [(ngModel)]="tech.date" class="form-control" bsDatepicker [bsConfig]="bsConfig">
       </div>
       <div class="form-group">
         <label for="order">Εντολή</label>
@@ -65,11 +65,13 @@
     </div>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Περιοχή</th>
-        <th>Ημερομηνία</th>
+        <th>Ημερομηνία
+          <a class="clickable" (click)="sortByDate()"> <i class="fa fa-sort"></i></a>
+        </th>
         <th>IDπελάτη</th>
         <th>Ονοματεπώνυμο</th>
         <th>Εντολή</th>
@@ -87,7 +89,7 @@
 
       <tr *ngFor="let task of tasks;let i = index">
         <td>{{task.area | titlecase }}</td>
-        <td>{{task.date}}/2018</td>
+        <td>{{task.date | date: 'dd/MM/yyyy'}}</td>
         <td>{{task.customerId}}</td>
         <td>{{task.fullName | titlecase}}</td>
         <td>{{task.order}}</td>
