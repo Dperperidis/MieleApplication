@@ -1,8 +1,8 @@
 .back-img {
-    background-image: url('../../assets/img/adminback.jpg');
+    background-image: url('../../assets/img/test.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    position: fixed;
+    position: contain;
     top: 0;
     left: 0;
     width: 100%;
