@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { Technician } from "../../_models/technician";
-import { TechService } from "../../_services/tech.service";
+import { TechFot} from "../../_services/techFot.service";
+import { Techs } from "../../_services/techs.service";
 
 @Component({
   selector: "app-create-tech",
@@ -17,7 +18,7 @@ export class CreateTechComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private techService: TechService,
+    private techService: Techs,
     private toastr: ToastrService,
     private router: Router
   ) {}

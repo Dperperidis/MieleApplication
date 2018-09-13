@@ -9,4 +9,5 @@ export interface Technician {
     address: string;
     specialization: string;
     areaService: string;
+    status: boolean;
 }

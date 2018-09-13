@@ -27,6 +27,7 @@
     "@progress/kendo-angular-grid": "^3.7.0",
     "@progress/kendo-data-query": "^1.5.0",
     "angular-datatables": "^6.0.0",
+    "angular-epic-spinners": "^1.0.9",
     "angular2-csv": "^0.2.9",
     "angular2-jwt": "^0.2.3",
     "animate.css": "^3.7.0",

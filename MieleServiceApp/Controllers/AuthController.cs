@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace MieleServiceApp.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
 

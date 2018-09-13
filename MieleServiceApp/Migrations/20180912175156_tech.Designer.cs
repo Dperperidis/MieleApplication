@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MieleServiceApp.Data;
 
 namespace MieleServiceApp.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20180912175156_tech")]
+    partial class tech
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,25 +21,7 @@ namespace MieleServiceApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MieleServiceApp.Model.Agents", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("InBoundCalls");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("Username");
-
-                    b.Property<string>("mValueTime");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Agents");
-                });
-
-            modelBuilder.Entity("MieleServiceApp.Model.ExternalFot", b =>
+            modelBuilder.Entity("MieleServiceApp.Model.ExternalTechs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,44 +55,7 @@ namespace MieleServiceApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExternalFot");
-                });
-
-            modelBuilder.Entity("MieleServiceApp.Model.ExternalMak", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Area");
-
-                    b.Property<string>("Damage");
-
-                    b.Property<DateTime>("Date");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<string>("Model");
-
-                    b.Property<string>("Order");
-
-                    b.Property<string>("Origin");
-
-                    b.Property<string>("PartsCost");
-
-                    b.Property<string>("ServiceCost");
-
-                    b.Property<string>("ServiceDesc");
-
-                    b.Property<string>("Status");
-
-                    b.Property<string>("TotalCost");
-
-                    b.Property<string>("customerId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExternalMak");
+                    b.ToTable("ExternalTechs");
                 });
 
             modelBuilder.Entity("MieleServiceApp.Model.Partners", b =>

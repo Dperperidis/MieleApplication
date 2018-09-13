@@ -4,8 +4,35 @@
 
 .btn{
     text-transform: none;
+
 }
 
 .clickable {
 cursor: pointer;
+}
+
+.red{
+    font-weight: bold;
+    background-color:rgb(247, 243, 14)!important;
+}
+
+.black {
+    color:rgba(7, 7, 7, 0.795);
+}
+
+
+.btn-primary{
+    background-color:#8d000c;
+}
+
+pagination/deep/ .page-item.active .page-link { 
+    z-index: 1;
+    color: #fff;
+    border-color: #8d000c!important;
+    background-color: #8d000c!important;
+    
+}
+
+pagination/deep/ .page-link{
+    color: #8d000c;
 }

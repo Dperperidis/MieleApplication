@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MieleServiceApp.Dtos
+namespace MieleServiceApp.Model
 {
-    public class TaskForListDto
+    public class ExternalFot
     {
         public int Id { get; set; }
         public string Area { get; set; }
@@ -20,6 +20,6 @@ namespace MieleServiceApp.Dtos
         public string PartsCost { get; set; }
         public string TotalCost { get; set; }
         public string ServiceDesc { get; set; }
-        public string status { get; set; }
+        public string Status { get; set; }
     }
 }

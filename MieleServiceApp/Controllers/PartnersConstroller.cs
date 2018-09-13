@@ -29,7 +29,6 @@ namespace MieleServiceApp.Controllers
             try
             {
  
-
                 var result = _ctx.Partners.ToList();
                 return Ok(result);
 

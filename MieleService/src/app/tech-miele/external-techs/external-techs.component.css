@@ -1,32 +1,48 @@
 .card {
-    max-width: 20rem;
-    height:50%;
+  max-width: 20rem;
+  height: 50%;
 }
 
 .card img {
-    transform: scale(1, 1);
-    transition-duration: 500ms;
-    transition-timing-function: ease-out;
-  }
+  transform: scale(1, 1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
 
 .card:hover img {
-    transform: scale(1.1, 1.1);
-    transition-duration: 500ms;
-    transition-timing-function: ease-out;
-    opacity: 1;
-  }
+  transform: scale(1.1, 1.1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  opacity: 1;
+}
 
 .card-img-wrapper {
-    overflow: hidden;
-    position: relative;
-  }
+  overflow: hidden;
+  position: relative;
+}
 
-  img{
-    height: 200px; 
+img {
+  height: 200px;
+  width: 100%;
+  display: block;
+}
+
+.row {
+  margin-top: 20%;
+}
+
+.card:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25), 0 15px 15px rgba(0, 0, 0, 0.22);
+}
+
+.background-img{
+    background-image: url('../../../assets/img/externaltech.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-     display: block;
-  }
-
-  .row{
-      margin-top:20%;
-  }
+    height: 100vh;
+    z-index: -1;
+}

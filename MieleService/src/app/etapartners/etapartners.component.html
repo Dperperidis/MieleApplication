@@ -10,19 +10,21 @@
 
     </select>
   </div>
-  <div *ngFor="let part of filteredPartner" class="container mt-5">
-    <div class="card border-warning mb-3" style="max-width: 20rem;">
-      <h3 class="card-header">{{part.nomos}}</h3>
-      <div class="card-body">
-        <h4 class="card-title">{{part.city}}</h4>
-        <p class="card-text">Ονομ/ώνυμο: {{part.partner}}
-        </p>
-        <p class="card-text">Τηλ: {{part.phone}}</p>
-        <p class="card-text">ΤΚ: {{part.postCode}}</p>
-        <p class="card-text">Διεύθυνση: {{part.address}}</p>
-        <p class="card-text">Email: {{part.email}}</p>
-        <p class="card-text">Κινητό: {{part.mobile}}</p>
-      </div>
+
+<div *ngFor="let part of filteredPartner" class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+        <h2 class="card-header">{{part.nomos}}</h2>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title"><strong>Πόλη:</strong> {{part.city}}</h4>
+        <p class="card-text"><strong>Ονομ/ώνυμο:</strong> {{part.partner}}</p>
+        <p class="card-text"><strong>Τηλ:</strong> {{part.phone}}</p>
+        <p class="card-text"><strong>ΤΚ:</strong> {{part.postCode}}</p>
+        <p class="card-text"><strong>Διεύθυνση:</strong> {{part.address}}</p>
+        <p class="card-text"><strong>Email:</strong> {{part.email}}</p>
+        <p class="card-text"><strong>Κινητό: </strong>{{part.mobile}}</p>
+        
     </div>
   </div>
 </div>

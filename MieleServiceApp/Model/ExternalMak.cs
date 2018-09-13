@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MieleServiceApp.Model
 {
-    public class ExternalTechs
+    public class ExternalMak
     {
         public int Id { get; set; }
         public string Area { get; set; }
@@ -20,5 +20,6 @@ namespace MieleServiceApp.Model
         public string PartsCost { get; set; }
         public string TotalCost { get; set; }
         public string ServiceDesc { get; set; }
+        public string Status { get; set; }
     }
 }

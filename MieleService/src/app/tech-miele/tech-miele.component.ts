@@ -6,12 +6,13 @@ import {
   transition,
   animate
 } from "@angular/animations";
-import { DataSource } from "@angular/cdk/collections";
+
 import { Observable, of, Subscription } from "rxjs";
 import { Technician } from "../_models/technician";
 import { AuthService } from "../_services/auth.service";
 import { ToastrService } from "ngx-toastr";
-import { TechService } from "../_services/tech.service";
+
+import { Techs } from "../_services/techs.service";
 
 @Component({
   selector: "tech-miele",
@@ -34,29 +35,35 @@ import { TechService } from "../_services/tech.service";
 export class TechMieleComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   panelOpenState = false;
-  filteredTechs : any[];
+  filteredTechs: any[];
+  display = false;
+  technicians: Technician[];
 
-technicians: Technician[];
-
-  constructor(private authService: AuthService,
-     private toastr: ToastrService,
-     private techService: TechService,) {
-    this.techService.getTechs()
-    .subscribe(techs => this.filteredTechs = this.technicians = techs)
- 
-  }
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private techService: Techs
+  ) {}
 
   filter(query: string) {
-    this.filteredTechs = (query) ?
-    this.technicians.filter(t => t.areaService.toLowerCase().includes(query.toLowerCase())) : 
-    this.technicians;
+    this.filteredTechs = query
+      ? this.technicians.filter(t =>
+          t.areaService.toLowerCase().includes(query.toLowerCase())
+        )
+      : this.technicians;
   }
 
   ngOnInit() {
+    this.display = true;
+    this.getTechs();
   }
 
-  ngOnDestroy(){
+  getTechs() {
+    this.techService
+      .getTechs()
+      .subscribe(techs => (this.filteredTechs = this.technicians = techs));
+    this.display = false;
   }
 
-
+  ngOnDestroy() {}
 }

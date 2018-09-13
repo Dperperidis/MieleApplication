@@ -23,11 +23,12 @@ import { AgentAuthResolver } from "./_resolvers/agent-auth.resolver";
 import { TechFotiadisComponent } from "./tech-miele/tech-fotiadis/tech-fotiadis.component";
 import { TechMakrakisComponent } from "./tech-miele/tech-makrakis/tech-makrakis.component";
 import { EtapartnersComponent } from "./etapartners/etapartners.component";
-import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guard";
 import { ArticlesComponent } from "./articles/articles.component";
 import { AdminboardComponent } from "./admin/adminboard.component";
 import { AdminAuthGuard } from "./_guards/admin-auth-guard.service";
-import { TaskResolver } from "./_resolvers/tasks.resolver";
+import { TaskFotResolver } from "./_resolvers/tasksFot.resolver";
+import { TaskMakResolver } from "./_resolvers/tasksMak.resolver";
+import { CreateAgentComponent } from "./create-agent/create-agent.component";
 
 export const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -61,18 +62,18 @@ export const routes: Routes = [
       { path: "eta/partners", component: EtapartnersComponent },
       { path: "articles", component: ArticlesComponent },
       { path: "admin/adminboard", component: AdminboardComponent, canActivate: [AdminAuthGuard] },
+      { path: "admin/create-agent", component: CreateAgentComponent, canActivate: [AdminAuthGuard] },
 
       {
         path: "external/tech/fot",
         component: TechFotiadisComponent,
-        resolve: { agent: AgentAuthResolver, task: TaskResolver }
+        resolve: { agent: AgentAuthResolver, taskFot: TaskFotResolver }
       },
-      
       {
         path: "external/tech/mak",
         component: TechMakrakisComponent,
-        resolve: { agent: AgentAuthResolver }
-      }
+        resolve: { agent: AgentAuthResolver, taskMak: TaskMakResolver }
+      },
     ]
   }
 ];

@@ -11,13 +11,13 @@ export class EtapartnersComponent implements OnInit {
   partner: EtaPartners[];
   filteredPartner: any[];
   data = true;
-  toggle = false;
 
   constructor(private eta: EtaPartnersService) { }
 
   ngOnInit() {
     this.eta.getPartners().subscribe(res => {
       this.partner = res;
+      
     });
   }
 

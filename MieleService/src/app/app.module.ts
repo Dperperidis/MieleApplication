@@ -20,6 +20,8 @@ import { TabsModule } from "ngx-bootstrap/tabs";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ModalModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { PaginationModule } from 'ngx-bootstrap';
+import {AtomSpinnerModule} from 'angular-epic-spinners'
 
 
 import { AppComponent } from "./app.component";
@@ -49,7 +51,7 @@ import { AgentCardComponent } from "./agent-card/agent-card.component";
 import { AgentCardResolver } from "./_resolvers/agent-card.resolver";
 import { UsersService } from "./_services/users.service";
 import { ExternalTechsComponent } from "./tech-miele/external-techs/external-techs.component";
-import { TechService } from "./_services/tech.service";
+import { TechFot } from "./_services/techFot.service";
 import { AgentAuthResolver } from "./_resolvers/agent-auth.resolver";
 import { TechFotiadisComponent } from "./tech-miele/tech-fotiadis/tech-fotiadis.component";
 import { TechMakrakisComponent } from "./tech-miele/tech-makrakis/tech-makrakis.component";
@@ -59,7 +61,10 @@ import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guard";
 import { ArticlesComponent } from './articles/articles.component';
 import { AdminboardComponent } from './admin/adminboard.component';
 import { AdminAuthGuard } from "./_guards/admin-auth-guard.service";
-import { TaskResolver } from "./_resolvers/tasks.resolver";
+import { TaskFotResolver } from "./_resolvers/tasksFot.resolver";
+import { TechMak } from "./_services/techMak.service";
+import { TaskMakResolver } from "./_resolvers/tasksMak.resolver";
+import { CreateAgentComponent } from './create-agent/create-agent.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -91,18 +96,21 @@ export function tokenGetter() {
     TechMakrakisComponent,
     EtapartnersComponent,
     ArticlesComponent,
-    AdminboardComponent
+    AdminboardComponent,
+    CreateAgentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     MatButtonModule,
     MatExpansionModule,
+    AtomSpinnerModule,
     MatFormFieldModule,
     BsDatepickerModule.forRoot(),
     MatProgressSpinnerModule,
     ModalModule.forRoot(),
     MatSortModule,
+    PaginationModule.forRoot(),
     MatPaginatorModule,
     MatCheckboxModule,
     MatInputModule,
@@ -132,12 +140,13 @@ export function tokenGetter() {
     AuthGuard,
     AgentCardResolver,
     UsersService,
-    TechService,
+    TechFot,
     AgentAuthResolver,
     EtaPartnersService,
-    PreventUnsavedChanges,
     AdminAuthGuard,
-    TaskResolver
+    TaskFotResolver,
+    TaskMakResolver,
+    TechMak
   ],
   bootstrap: [AppComponent]
 })

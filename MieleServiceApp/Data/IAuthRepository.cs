@@ -12,7 +12,8 @@ namespace MieleServiceApp.Data
         Task<User> Register(User user, string password);
         Task<bool> UserExists(string email);
         Task<User> Login(string email, string password);
-        Task<PagedList<ExternalTechs>> GetTasks(TaskParams taskParams);
+        Task<PagedList<ExternalFot>> GetTasksFot(TaskParams taskParams);
+        Task<PagedList<ExternalMak>> GetTasksMak(TaskParams taskParams);
 
     }
 }

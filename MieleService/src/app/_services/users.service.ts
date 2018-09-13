@@ -15,4 +15,8 @@ export class UsersService {
   getUser(id): Observable<User> {
     return this.http.get<User>(this.baseUrl + "auth/" + id);
   }
+
+  getUsers(): Observable<Array<User>> {
+    return this.http.get<Array<User>>(this.baseUrl + "auth/agents");
+  }
 }

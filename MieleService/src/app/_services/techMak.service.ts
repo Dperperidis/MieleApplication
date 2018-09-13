@@ -11,21 +11,14 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: "root"
 })
-export class TechService {
-  baseUrl = environment.apiUrl;
+export class TechMak {
+  baseUrl = environment.apiUrl + "techmak/";
 
   constructor(private http: HttpClient) {}
 
-  createTech(technician: Technician) {
-    return this.http.post(this.baseUrl + "techs/register", technician);
-  }
-
-  getTechs(): Observable<Array<Technician>> {
-    return this.http.get<Array<Technician>>(this.baseUrl + "techs/techlist");
-  }
 
   createTaskOrder(techs: ExternalTechs): Observable<ExternalTechs> {
-    return this.http.post<ExternalTechs>(this.baseUrl + "techs/externalOrder", techs);
+    return this.http.post<ExternalTechs>(this.baseUrl + "externalOrderMak", techs);
   }
 
   getTechTasks(page?, itemsPerPage?): Observable<PaginatedResult<ExternalTechs[]>> {
@@ -38,7 +31,7 @@ export class TechService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    return this.http.get<Array<ExternalTechs>>(this.baseUrl + "techs/getTasks", {observe: 'response', params})
+    return this.http.get<Array<ExternalTechs>>(this.baseUrl + "getTasksMak", {observe: 'response', params})
     .pipe(
       map(response => {
         paginatedResult.result = response.body;
@@ -51,14 +44,14 @@ export class TechService {
   }
 
   getTechTask(id: number) :Observable<ExternalTechs> {
-    return this.http.get<ExternalTechs>(this.baseUrl + "techs/" + id)
+    return this.http.get<ExternalTechs>(this.baseUrl + "Mak/" + id)
   }
 
   updateTask(techs: ExternalTechs) : Observable<ExternalTechs> {
-    return this.http.post<ExternalTechs>(this.baseUrl + "techs/update", techs);
+    return this.http.post<ExternalTechs>(this.baseUrl + "update/Mak", techs);
   }
 
   deleteTask(id: number): Observable<any> {
-    return this.http.post(this.baseUrl + 'techs/delete/' + id, {})
+    return this.http.post(this.baseUrl + 'delete/Mak/' + id, {})
   }
 }

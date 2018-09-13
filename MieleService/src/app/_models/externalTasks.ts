@@ -12,5 +12,7 @@ export interface ExternalTasks {
     partsCost: string;
     totalCost: string;
     serviceDesc: string;
+    status: string;
+
 
 }

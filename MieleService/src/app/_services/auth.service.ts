@@ -52,9 +52,7 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  getUsers(): Observable<Array<User>> {
-    return this.http.get<Array<User>>(this.baseUrl + "auth/agents");
-  }
+
 
   // errorHandler(error: HttpErrorResponse) {
   //   return observableThrowError(error || 'Server Error');

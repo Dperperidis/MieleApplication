@@ -10,8 +10,8 @@ using MieleServiceApp.Data;
 namespace MieleServiceApp.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20180908155907_new")]
-    partial class @new
+    [Migration("20180912184404_makrakis")]
+    partial class makrakis
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace MieleServiceApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MieleServiceApp.Model.ExternalTechs", b =>
+            modelBuilder.Entity("MieleServiceApp.Model.ExternalFot", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,13 +47,52 @@ namespace MieleServiceApp.Migrations
 
                     b.Property<string>("ServiceDesc");
 
+                    b.Property<string>("Status");
+
                     b.Property<string>("TotalCost");
 
                     b.Property<string>("customerId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExternalTechs");
+                    b.ToTable("ExternalFot");
+                });
+
+            modelBuilder.Entity("MieleServiceApp.Model.ExternalMak", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Area");
+
+                    b.Property<string>("Damage");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("Model");
+
+                    b.Property<string>("Order");
+
+                    b.Property<string>("Origin");
+
+                    b.Property<string>("PartsCost");
+
+                    b.Property<string>("ServiceCost");
+
+                    b.Property<string>("ServiceDesc");
+
+                    b.Property<string>("Status");
+
+                    b.Property<string>("TotalCost");
+
+                    b.Property<string>("customerId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExternalMak");
                 });
 
             modelBuilder.Entity("MieleServiceApp.Model.Partners", b =>

@@ -1,13 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { TechService } from "../../_services/tech.service";
+import { TechFot } from "../../_services/techFot.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { User } from "../../_models/user";
 
 import { ExternalTechs } from "../../_models/externalTechs";
 import { ToastrService } from "ngx-toastr";
 import { BsDatepickerConfig } from "ngx-bootstrap";
-import { PaginatedResult } from "../../_models/pagination";
+import { PaginatedResult, Pagination } from "../../_models/pagination";
 import { ExternalTasks } from "../../_models/externalTasks";
+
 
 @Component({
   selector: "app-tech-fotiadis",
@@ -16,42 +17,58 @@ import { ExternalTasks } from "../../_models/externalTasks";
 })
 export class TechFotiadisComponent implements OnInit {
   tech = new ExternalTechs();
-  tasks : Array<ExternalTasks>;
+  tasks: Array<ExternalTasks>;
   user: User;
   showNewRow = false;
   bsConfig: Partial<BsDatepickerConfig>;
+  pagination: Pagination;
+
+  bsDate= new Date();
 
   constructor(
-    private techService: TechService,
+    private techService: TechFot,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.route.data.subscribe(data => {
       this.user = data["agent"];
-      this.tasks = data["task"].result;
+      this.tasks = data["taskFot"].result;
+      this.pagination = data["taskFot"].pagination;
     });
   }
 
   ngOnInit() {
-    (this.bsConfig = {
+    this.bsConfig = {
+      minDate: new Date(),
       containerClass: "theme-red",
-      dateInputFormat: 'DD/MM/YYYY'
-    });
-
+      dateInputFormat: "DD/MM/YYYY",
+      showWeekNumbers: false
+    };
   }
 
   newTask() {
     this.showNewRow = true;
   }
 
-  sortByDate() {
-    this.techService.getTechTasks().subscribe(res =>{
-      this.tasks = res.result;
-    })
+  pageChanged(event: any): void {
+    this.pagination.currentPage = event.page;
+    this.getPagiTasks();
   }
-  
 
+  getPagiTasks() {
+    this.techService
+      .getTechTasks(this.pagination.currentPage, this.pagination.itemsPerPage)
+      .subscribe(
+        (res: PaginatedResult<ExternalTasks[]>) => {
+          this.tasks = res.result;
+          this.pagination = res.pagination;
+        },
+        error => {
+          this.toastr.error(error);
+        }
+      );
+  }
 
   closeNewTask() {
     this.showNewRow = false;
@@ -61,6 +78,8 @@ export class TechFotiadisComponent implements OnInit {
   createOrUpdate() {
     this.tech.id ? this.updateTask() : this.createTask();
   }
+
+
 
   createTask() {
     this.techService.createTaskOrder(this.tech).subscribe(res => {
@@ -115,5 +134,6 @@ export class TechFotiadisComponent implements OnInit {
     this.tech.serviceCost = this.tasks[i].serviceCost;
     this.tech.serviceDesc = this.tasks[i].serviceDesc;
     this.tech.totalCost = this.tasks[i].totalCost;
+    this.tech.status = this.tasks[i].status;
   }
 }

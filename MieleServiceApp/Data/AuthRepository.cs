@@ -80,11 +80,18 @@ namespace MieleServiceApp.Data
             }
         }
 
-        public async Task<PagedList<ExternalTechs>> GetTasks(TaskParams taskParams)
+        public async Task<PagedList<ExternalFot>> GetTasksFot(TaskParams taskParams)
         {
-            var tasks = _context.ExternalTechs.OrderByDescending(x => x.Date).AsQueryable();
+            var fotTasks = _context.ExternalFot.OrderByDescending(x => x.Date).AsQueryable();
 
-            return await PagedList<ExternalTechs>.CreateAsync(tasks, taskParams.PageNumber, taskParams.PageSize);
+            return await PagedList<ExternalFot>.CreateAsync(fotTasks, taskParams.PageNumber, taskParams.PageSize);
+        }
+
+        public async Task<PagedList<ExternalMak>> GetTasksMak(TaskParams taskParams)
+        {
+            var makTasks = _context.ExternalMak.OrderByDescending(x => x.Date).AsQueryable();
+
+            return await PagedList<ExternalMak>.CreateAsync(makTasks, taskParams.PageNumber, taskParams.PageSize);
         }
     }
 }

@@ -12,5 +12,7 @@ export class ExternalTechs {
     partsCost: string;
     totalCost: string;
     serviceDesc: string;
+    status: string;
+
 
 }
