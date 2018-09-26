@@ -29,6 +29,7 @@ import { AdminAuthGuard } from "./_guards/admin-auth-guard.service";
 import { TaskFotResolver } from "./_resolvers/tasksFot.resolver";
 import { TaskMakResolver } from "./_resolvers/tasksMak.resolver";
 import { CreateAgentComponent } from "./create-agent/create-agent.component";
+import { MieleDeviceComponent } from "./miele-device/miele-device.component";
 
 export const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -59,6 +60,7 @@ export const routes: Routes = [
       { path: "products/toys", component: ToysComponent },
       { path: "products/vacuum", component: VacuumComponent },
       { path: "external/techs", component: ExternalTechsComponent },
+      { path: "miele/devices", component: MieleDeviceComponent },
       { path: "eta/partners", component: EtapartnersComponent },
       { path: "articles", component: ArticlesComponent },
       { path: "admin/adminboard", component: AdminboardComponent, canActivate: [AdminAuthGuard] },

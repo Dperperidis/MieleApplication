@@ -11,6 +11,6 @@ namespace MieleServiceApp.Model
         public string Username { get; set; }
         public string LastName { get; set; }
         public string InBoundCalls { get; set; }
-        public string mValueTime { get; set; }
+        public string mValueTime { get; set; } 
     }
 }

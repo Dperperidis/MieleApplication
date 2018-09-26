@@ -65,6 +65,7 @@ import { TaskFotResolver } from "./_resolvers/tasksFot.resolver";
 import { TechMak } from "./_services/techMak.service";
 import { TaskMakResolver } from "./_resolvers/tasksMak.resolver";
 import { CreateAgentComponent } from './create-agent/create-agent.component';
+import { MieleDeviceComponent } from './miele-device/miele-device.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -97,7 +98,8 @@ export function tokenGetter() {
     EtapartnersComponent,
     ArticlesComponent,
     AdminboardComponent,
-    CreateAgentComponent
+    CreateAgentComponent,
+    MieleDeviceComponent
   ],
   imports: [
     BrowserModule,

@@ -24,8 +24,20 @@ img{
   }
 
   .card:hover {
-    -webkit-box-shadow: 3px 3px 5px 6px rgb(150, 148, 148);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    3px 3px 5px 6px rgb(150, 148, 148); /* Firefox 3.5 - 3.6 */
-    box-shadow:         3px 3px 5px 6px rgb(150, 148, 148);      
+    -webkit-box-shadow: 3px 3px 5px 6px rgba(12, 12, 12, 0.521);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 5px 6px rgba(12, 12, 12, 0.521); /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 5px 6px rgba(12, 12, 12, 0.521);      
   }
 
+  .back-img{
+
+    background-image: url('src/assets/img/prod.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
